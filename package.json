@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Food ordering app",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Shahbaz",
   "license": "ISC",
@@ -11,5 +13,8 @@
     "parcel": "^2.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
   }
 }
