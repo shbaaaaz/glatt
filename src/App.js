@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styles from './App.module.css'
+import Header from './components/Header/Header'
 
 const App = () => (
-  <div>
-    <h1 className={styles.title}>Order food smoothly with Glatt</h1>
+  <div class={styles['app']}>
+    <Header />
   </div>
 )
 
