@@ -1,4 +1,4 @@
-# Order food smoothly with Glatt
+# Order food smoothly with Glattessen
 
 ## Low level design - LLD
 

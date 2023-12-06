@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #186f65;
+  --tag-color: #eeeeee;
+  --dark-tag-color: rgb(232, 230, 230);
+}
+
 body {
   margin: 0;
   padding: 0;

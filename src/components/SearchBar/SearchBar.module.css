@@ -1,0 +1,31 @@
+.form {
+  position: relative;
+}
+
+.search-input {
+  width: 70%;
+  border-radius: 50px;
+  border: 2px solid var(--tag-color);
+  max-height: 2rem;
+  padding: 16px 55px 16px 16px;
+  background-color: var(--tag-color);
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: var(--dark-tag-color);
+}
+
+.search-icon {
+  position: absolute;
+  right: 5%;
+  bottom: 30%;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .search-icon {
+    right: 25%;
+  }
+}
