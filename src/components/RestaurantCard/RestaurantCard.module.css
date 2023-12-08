@@ -1,0 +1,78 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+}
+
+.image-container {
+  flex: 2;
+}
+
+.restaurant-details {
+  flex: 3;
+}
+
+.details-row-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.restaurant-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.rating {
+  background-color: var(--tag-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: smaller;
+  margin: 0 0.3rem;
+}
+
+.details-row-one > h3 {
+  width: 95%;
+  margin: 0.2rem;
+  font-size: 1rem;
+}
+
+.details-row-two > p {
+  margin: 0.3rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eta,
+.price {
+  font-size: small;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cuisines {
+  margin: 0.2rem 0;
+  font-size: small;
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+
+  .details-row-one {
+    flex-direction: row;
+    align-items: center;
+  }
+}
