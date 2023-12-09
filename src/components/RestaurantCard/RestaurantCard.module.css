@@ -49,12 +49,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: small;
+  font-weight: bold;
 }
 
 .eta,
 .price {
-  font-size: small;
-  font-weight: bold;
   display: flex;
   justify-content: space-around;
   align-items: center;
