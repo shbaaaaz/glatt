@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 
 // importing local files
+import { ShimmerCardContainer } from '../Shimmer/Shimmer'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import styles from './RestaurantContainer.module.css'
 import { fetchRestaurantList } from '../../lib/restaurantData'
@@ -39,15 +40,18 @@ export const RestaurantContainer = ({ searchString }) => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className={styles['restaurant-container']}>
-        {restaurantList.length > 0 &&
-          restaurantList.map((restaurant) => (
+      {restaurantList.length > 0 ? (
+        <div className={styles['restaurant-container']}>
+          {restaurantList.map((restaurant) => (
             <RestaurantCard
               key={restaurant.info.id}
               restaurantData={restaurant}
             />
           ))}
-      </div>
+        </div>
+      ) : (
+        <ShimmerCardContainer />
+      )}
     </>
   )
 }
