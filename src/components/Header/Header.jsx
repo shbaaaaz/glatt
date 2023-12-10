@@ -1,5 +1,7 @@
 import { SearchBar } from '../SearchBar/SearchBar'
 import styles from './Header.module.css'
+import logo from '../../images/logo.png'
+
 import { IoLocationSharp, IoBagHandle } from 'react-icons/io5'
 import { FaUserCircle } from 'react-icons/fa'
 
@@ -9,7 +11,7 @@ const Header = () => {
   return (
     <nav className={styles['nav']}>
       <div className={styles['brand-container']}>
-        <a className={styles['brand']}>GlattEssen</a>
+        <img className={styles['brand']} src={logo} />
         <div className={styles['location']}>
           <span>
             <IoLocationSharp />
