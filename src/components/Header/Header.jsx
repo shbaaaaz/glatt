@@ -4,7 +4,7 @@ import { IoLocationSharp, IoBagHandle } from 'react-icons/io5'
 import { FaUserCircle } from 'react-icons/fa'
 
 const Header = () => {
-  const location = 'Cologne'
+  const location = 'Alambagh, Lko'
   const itemsInCart = 0
   return (
     <nav className={styles['nav']}>

@@ -61,9 +61,16 @@
   gap: 0.4rem;
 }
 
-.cuisines {
+.cuisines,
+.area {
   margin: 0.2rem 0;
   font-size: small;
+}
+
+.area {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 @media screen and (min-width: 768px) {
