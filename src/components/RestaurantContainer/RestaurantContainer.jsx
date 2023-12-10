@@ -1,33 +1,49 @@
-// importing libraries
+// import third party packages
 import { useEffect, useState } from 'react'
-
-// importing local files
+// import local files
+import { fetchRestaurantList } from '../../lib/restaurantData'
 import { ShimmerCardContainer } from '../Shimmer/Shimmer'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import styles from './RestaurantContainer.module.css'
-import { fetchRestaurantList } from '../../lib/restaurantData'
 
 export const RestaurantContainer = ({ searchString }) => {
   const [restaurantList, setRestaurantList] = useState([])
+  const [filteredRestaurantData, setFilteredRestaurantData] = useState([])
 
+  // Fetch restaurant list on initial render
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const restaurants = await fetchRestaurantList()
+        setRestaurantList(restaurants)
+        setFilteredRestaurantData(restaurants)
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
     fetchData()
   }, [])
 
-  const fetchData = async () => {
-    try {
-      const restaurants = await fetchRestaurantList()
-      setRestaurantList(restaurants)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  // Filter data on search
+  useEffect(() => {
+    searchString
+      ? setFilteredRestaurantData(
+          restaurantList.filter((restaurant) =>
+            restaurant.info.name
+              .toLowerCase()
+              .includes(searchString.toLowerCase())
+          )
+        )
+      : setFilteredRestaurantData(restaurantList)
+  }, [searchString])
 
+  // Filter top rated restaurants
   const filterTopRatedRestaurants = () => {
-    const filteredData = restaurantList.filter(
-      (restaurant) => restaurant.info.avgRating > 4
+    setFilteredRestaurantData(
+      filteredRestaurantData.filter(
+        (restaurant) => restaurant.info.avgRating > 4
+      )
     )
-    setRestaurantList(filteredData)
   }
 
   return (
@@ -40,9 +56,9 @@ export const RestaurantContainer = ({ searchString }) => {
           Top Rated Restaurants
         </button>
       </div>
-      {restaurantList.length > 0 ? (
+      {filteredRestaurantData.length > 0 ? (
         <div className={styles['restaurant-container']}>
-          {restaurantList.map((restaurant) => (
+          {filteredRestaurantData.map((restaurant) => (
             <RestaurantCard
               key={restaurant.info.id}
               restaurantData={restaurant}
@@ -50,6 +66,7 @@ export const RestaurantContainer = ({ searchString }) => {
           ))}
         </div>
       ) : (
+        // Rendering shimmer UI till the data has not arrived
         <ShimmerCardContainer />
       )}
     </>

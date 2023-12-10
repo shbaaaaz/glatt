@@ -1,8 +1,9 @@
-import styles from './RestaurantCard.module.css'
-import { RESTAURANT_IMG_BASE_URL } from '../../utils/constants'
-
+// import third party packages
 import { CiClock2, CiMoneyBill } from 'react-icons/ci'
 import { IoLocationSharp } from 'react-icons/io5'
+// import local files
+import styles from './RestaurantCard.module.css'
+import { RESTAURANT_IMG_BASE_URL } from '../../utils/constants'
 
 export const RestaurantCard = ({ restaurantData }) => {
   const {

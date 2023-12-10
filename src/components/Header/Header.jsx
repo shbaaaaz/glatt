@@ -1,10 +1,11 @@
+// import third party packages
+import { IoLocationSharp, IoBagHandle } from 'react-icons/io5'
+import { FaUserCircle } from 'react-icons/fa'
 import { SearchBar } from '../SearchBar/SearchBar'
+// import local files
 import { DEFAULT_ADDRESS } from '../../utils/constants'
 import styles from './Header.module.css'
 import logo from '../../images/logo.png'
-
-import { IoLocationSharp, IoBagHandle } from 'react-icons/io5'
-import { FaUserCircle } from 'react-icons/fa'
 
 const Header = ({ handleSearch }) => {
   const location = DEFAULT_ADDRESS.name

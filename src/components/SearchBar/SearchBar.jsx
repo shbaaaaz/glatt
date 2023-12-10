@@ -1,7 +1,7 @@
-// importing libraries
+// import third party packages
 import { useEffect, useState } from 'react'
 import { IoSearchOutline } from 'react-icons/io5'
-// importing local files
+// import local files
 import styles from './SearchBar.module.css'
 
 export const SearchBar = ({ handleSearch }) => {

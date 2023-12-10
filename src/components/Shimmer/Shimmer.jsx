@@ -1,3 +1,4 @@
+// import local files
 import styles from './Shimmer.module.css'
 
 const ShimmerCard = () => {
