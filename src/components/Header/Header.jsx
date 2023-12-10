@@ -1,12 +1,13 @@
 import { SearchBar } from '../SearchBar/SearchBar'
+import { DEFAULT_ADDRESS } from '../../utils/constants'
 import styles from './Header.module.css'
 import logo from '../../images/logo.png'
 
 import { IoLocationSharp, IoBagHandle } from 'react-icons/io5'
 import { FaUserCircle } from 'react-icons/fa'
 
-const Header = () => {
-  const location = 'Alambagh, Lko'
+const Header = ({ handleSearch }) => {
+  const location = DEFAULT_ADDRESS.name
   const itemsInCart = 0
   return (
     <nav className={styles['nav']}>
@@ -21,7 +22,7 @@ const Header = () => {
       </div>
       <div className={styles['menu']}>
         <div className={styles['search']}>
-          <SearchBar />
+          <SearchBar handleSearch={handleSearch} />
         </div>
         <div className={styles['nav-cta-group']}>
           <div className={styles['cart']}>

@@ -1,9 +1,9 @@
 import { RestaurantContainer } from '../RestaurantContainer/RestaurantContainer'
 
-export const Body = () => {
+export const Body = ({ searchString }) => {
   return (
     <div>
-      <RestaurantContainer />
+      <RestaurantContainer searchString={searchString} />
     </div>
   )
 }

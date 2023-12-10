@@ -1,13 +1,26 @@
 // importing libraries
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // importing local files
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import styles from './RestaurantContainer.module.css'
-import { mockData } from '../../utils/mockData'
+import { fetchRestaurantList } from '../../lib/restaurantData'
 
-export const RestaurantContainer = () => {
-  const [restaurantList, setRestaurantList] = useState(mockData)
+export const RestaurantContainer = ({ searchString }) => {
+  const [restaurantList, setRestaurantList] = useState([])
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    try {
+      const restaurants = await fetchRestaurantList()
+      setRestaurantList(restaurants)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
   const filterTopRatedRestaurants = () => {
     const filteredData = restaurantList.filter(
@@ -27,12 +40,13 @@ export const RestaurantContainer = () => {
         </button>
       </div>
       <div className={styles['restaurant-container']}>
-        {restaurantList.map((restaurant) => (
-          <RestaurantCard
-            key={restaurant.info.id}
-            restaurantData={restaurant}
-          />
-        ))}
+        {restaurantList.length > 0 &&
+          restaurantList.map((restaurant) => (
+            <RestaurantCard
+              key={restaurant.info.id}
+              restaurantData={restaurant}
+            />
+          ))}
       </div>
     </>
   )
