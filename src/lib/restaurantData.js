@@ -19,16 +19,16 @@ export const fetchRestaurantList = async () => {
     const result = await fetch(url)
     const jsonData = await result.json()
 
-    if (!isMobile) {
-      const restaurantsForDesktop =
-        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants
-      return restaurantsForDesktop
-    } else {
+    if (isMobile) {
       const restaurantsForMobile =
         jsonData?.data.success.cards[4].gridWidget.gridElements.infoWithStyle
           .restaurants
       return restaurantsForMobile
+    } else {
+      const restaurantsForDesktop =
+        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
+      return restaurantsForDesktop
     }
   } catch (error) {
     throw new Error(error)

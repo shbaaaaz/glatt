@@ -5,20 +5,31 @@ import { fetchRestaurantList } from '../../lib/restaurantData'
 import { ShimmerCardContainer } from '../Shimmer/Shimmer'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import styles from './RestaurantContainer.module.css'
+import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
 
 export const RestaurantContainer = ({ searchString }) => {
   const [restaurantList, setRestaurantList] = useState([])
   const [filteredRestaurantData, setFilteredRestaurantData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
   // Fetch restaurant list on initial render
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setError('')
+        setIsLoading(true)
         const restaurants = await fetchRestaurantList()
-        setRestaurantList(restaurants)
-        setFilteredRestaurantData(restaurants)
+        if (restaurants) {
+          setRestaurantList(restaurants)
+          setFilteredRestaurantData(restaurants)
+          setIsLoading(false)
+        } else {
+          throw new Error('Something went wrong!')
+        }
       } catch (error) {
-        console.log(error.message)
+        setIsLoading(false)
+        setError(error.message)
       }
     }
     fetchData()
@@ -56,7 +67,9 @@ export const RestaurantContainer = ({ searchString }) => {
           Top Rated Restaurants
         </button>
       </div>
-      {filteredRestaurantData.length > 0 ? (
+      {isLoading && <ShimmerCardContainer />}
+      {error && <ErrorContainer error={error} />}
+      {filteredRestaurantData.length > 0 && (
         <div className={styles['restaurant-container']}>
           {filteredRestaurantData.map((restaurant) => (
             <RestaurantCard
@@ -65,9 +78,6 @@ export const RestaurantContainer = ({ searchString }) => {
             />
           ))}
         </div>
-      ) : (
-        // Rendering shimmer UI till the data has not arrived
-        <ShimmerCardContainer />
       )}
     </>
   )
