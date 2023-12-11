@@ -13,3 +13,7 @@ export const RESTAURANT_LIST_API_URL_MOBILE =
   CORS_PROXY + 'https://www.swiggy.com/mapi/homepage/getCards'
 export const RESTAURANT_LIST_API_URL_DESKTOP =
   CORS_PROXY + 'https://www.swiggy.com/dapi/restaurants/list/v5'
+
+export const RESTAURANT_LIST_API_CARD_TITLE_FOR_MOBILE =
+  'All Restaurants Nearby'
+export const RESTAURANT_LIST_API_CARD_ID_FOR_DESKTOP = 'restaurant_grid_listing'
