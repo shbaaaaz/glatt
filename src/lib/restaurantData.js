@@ -1,17 +1,36 @@
 import { DEFAULT_ADDRESS } from '../utils/constants'
-import { mockData } from '../utils/mockData'
+
+const getInfo = (lat = DEFAULT_ADDRESS.lat, long = DEFAULT_ADDRESS.long) => {
+  let [url, isMobile] = ['', false]
+
+  if (window.innerWidth <= 768) {
+    url = `${process.env.REACT_APP_RESTAURANT_LIST_API_URL_MOBILE}?lat=${lat}&lng=${long}`
+    isMobile = true
+  } else {
+    url = `${process.env.REACT_APP_RESTAURANT_LIST_API_URL_DESKTOP}?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    isMobile = false
+  }
+  return [url, isMobile]
+}
 
 export const fetchRestaurantList = async () => {
   try {
-    const url = `${process.env.REACT_APP_SWIGGY_API_URL}?lat=${DEFAULT_ADDRESS.lat}&lng=${DEFAULT_ADDRESS.long}`
+    const [url, isMobile] = getInfo()
     const result = await fetch(url)
     const jsonData = await result.json()
-    const cards = jsonData?.data?.success?.cards
-    const restaurants =
-      cards[cards.length - 1]?.gridWidget?.gridElements?.infoWithStyle
-        ?.restaurants
-    return restaurants
+
+    if (!isMobile) {
+      const restaurantsForDesktop =
+        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+          .restaurants
+      return restaurantsForDesktop
+    } else {
+      const restaurantsForMobile =
+        jsonData?.data.success.cards[4].gridWidget.gridElements.infoWithStyle
+          .restaurants
+      return restaurantsForMobile
+    }
   } catch (error) {
-    return mockData
+    throw new Error(error)
   }
 }

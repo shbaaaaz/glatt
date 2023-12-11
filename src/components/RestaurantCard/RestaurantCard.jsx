@@ -16,6 +16,12 @@ export const RestaurantCard = ({ restaurantData }) => {
     areaName,
   } = restaurantData.info
 
+  let cuisinesList = cuisines.join(', ')
+  cuisinesList =
+    cuisinesList.length > 80
+      ? cuisinesList.substring(0, 81) + '...'
+      : cuisinesList
+
   return (
     <div className={styles['cards']}>
       <div className={styles['image-container']}>
@@ -42,7 +48,7 @@ export const RestaurantCard = ({ restaurantData }) => {
             </span>
           </p>
         </div>
-        <p className={styles['cuisines']}>{cuisines.join(', ')}</p>
+        <p className={styles['cuisines']}>{cuisinesList}</p>
         <p className={styles['area']}>
           <IoLocationSharp />
           {areaName}
