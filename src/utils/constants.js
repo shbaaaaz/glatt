@@ -6,3 +6,10 @@ export const DEFAULT_ADDRESS = {
   long: '80.9012798',
   name: 'Alambagh, Lucknow',
 }
+
+export const CORS_PROXY = 'https://corsproxy.io/?'
+
+export const RESTAURANT_LIST_API_URL_MOBILE =
+  CORS_PROXY + 'https://www.swiggy.com/mapi/homepage/getCards'
+export const RESTAURANT_LIST_API_URL_DESKTOP =
+  CORS_PROXY + 'https://www.swiggy.com/dapi/restaurants/list/v5'

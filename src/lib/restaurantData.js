@@ -1,13 +1,17 @@
-import { DEFAULT_ADDRESS } from '../utils/constants'
+import {
+  DEFAULT_ADDRESS,
+  RESTAURANT_LIST_API_URL_MOBILE,
+  RESTAURANT_LIST_API_URL_DESKTOP,
+} from '../utils/constants'
 
 const getInfo = (lat = DEFAULT_ADDRESS.lat, long = DEFAULT_ADDRESS.long) => {
   let [url, isMobile] = ['', false]
 
   if (window.innerWidth <= 768) {
-    url = `${process.env.REACT_APP_RESTAURANT_LIST_API_URL_MOBILE}?lat=${lat}&lng=${long}`
+    url = `${RESTAURANT_LIST_API_URL_MOBILE}?lat=${lat}&lng=${long}`
     isMobile = true
   } else {
-    url = `${process.env.REACT_APP_RESTAURANT_LIST_API_URL_DESKTOP}?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    url = `${RESTAURANT_LIST_API_URL_DESKTOP}?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
     isMobile = false
   }
   return [url, isMobile]
