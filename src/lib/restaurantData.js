@@ -24,14 +24,16 @@ export const fetchRestaurantList = async () => {
     const jsonData = await result.json()
 
     if (isMobile) {
-      const restaurantsForMobile =
-        jsonData?.data.success.cards[4].gridWidget.gridElements.infoWithStyle
-          .restaurants
+      const restaurantsForMobile = jsonData?.data?.success?.cards?.filter(
+        (resCard) =>
+          resCard.gridWidget?.header?.title?.toLowerCase() ===
+          'all restaurants nearby'
+      )[0]?.gridWidget?.gridElements?.infoWithStyle?.restaurants
       return restaurantsForMobile
     } else {
-      const restaurantsForDesktop =
-        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          .restaurants
+      const restaurantsForDesktop = jsonData?.data?.cards?.filter(
+        (resCard) => resCard.card?.card?.id === 'restaurant_grid_listing'
+      )[0]?.card?.card?.gridElements?.infoWithStyle.restaurants
       return restaurantsForDesktop
     }
   } catch (error) {
