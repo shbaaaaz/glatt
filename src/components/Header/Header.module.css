@@ -47,6 +47,7 @@
 
 .cart {
   position: relative;
+  color: inherit;
 }
 
 .cart-counter {

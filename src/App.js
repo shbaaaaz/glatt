@@ -9,6 +9,7 @@ import Body from './components/Body/Body'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 import RouteError from './components/RouteError/RouteError'
+import RestaurantMenu from './components/RestaurantMenu/RestaurantMenu'
 
 const App = () => {
   const [searchString, setSearchString] = useState('')
@@ -43,6 +44,10 @@ const appRouter = createBrowserRouter([
         path: '/contact',
         element: <Contact />,
       },
+      {
+        path:"restaurant/:id",
+        element: <RestaurantMenu/>
+      }
     ],
   },
 ])

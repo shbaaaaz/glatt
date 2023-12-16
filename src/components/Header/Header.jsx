@@ -2,6 +2,7 @@
 import { IoLocationSharp, IoBagHandle } from 'react-icons/io5'
 import { FaUserCircle } from 'react-icons/fa'
 import { SearchBar } from '../SearchBar/SearchBar'
+import { Link } from 'react-router-dom'
 // import local files
 import { DEFAULT_ADDRESS } from '../../utils/constants'
 import styles from './Header.module.css'
@@ -13,7 +14,9 @@ const Header = ({ handleSearch }) => {
   return (
     <nav className={styles['nav']}>
       <div className={styles['brand-container']}>
-        <img className={styles['brand']} src={logo} />
+        <Link to={'/'}>
+          <img className={styles['brand']} src={logo} />
+        </Link>
         <div className={styles['location']}>
           <span>
             <IoLocationSharp />
@@ -26,10 +29,10 @@ const Header = ({ handleSearch }) => {
           <SearchBar handleSearch={handleSearch} />
         </div>
         <div className={styles['nav-cta-group']}>
-          <div className={styles['cart']}>
+          <Link to={'./about'} className={styles['cart']}>
             <IoBagHandle role='button' className={styles['icon-button']} />
             <span className={styles['cart-counter']}>{itemsInCart}</span>
-          </div>
+          </Link>
           <div>
             <FaUserCircle role='button' className={styles['icon-button']} />
           </div>

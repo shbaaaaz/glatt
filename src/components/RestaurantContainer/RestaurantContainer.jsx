@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { fetchRestaurantList } from '../../lib/restaurantData'
 import { ShimmerCardContainer } from '../Shimmer/Shimmer'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
-import styles from './RestaurantContainer.module.css'
 import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
+import styles from './RestaurantContainer.module.css'
 
 export const RestaurantContainer = ({ searchString }) => {
   const [restaurantList, setRestaurantList] = useState([])

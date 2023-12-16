@@ -4,6 +4,7 @@ import {
   RESTAURANT_LIST_API_URL_DESKTOP,
   RESTAURANT_LIST_API_CARD_TITLE_FOR_MOBILE,
   RESTAURANT_LIST_API_CARD_ID_FOR_DESKTOP,
+  RESTAURANTS_MENU_API,
 } from '../utils/constants'
 
 const getInfo = (lat = DEFAULT_ADDRESS.lat, long = DEFAULT_ADDRESS.long) => {
@@ -39,6 +40,22 @@ export const fetchRestaurantList = async () => {
       )[0]?.card?.card?.gridElements?.infoWithStyle.restaurants
       return restaurantsForDesktop
     }
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const fetchRestaurantMenu = async (
+  restaurantID = '691057',
+  lat = DEFAULT_ADDRESS.lat,
+  lng = DEFAULT_ADDRESS.long
+) => {
+  try {
+    const url = `${RESTAURANTS_MENU_API}${restaurantID}&lat=${lat}&lng=${lng}`
+    const response = await fetch(url)
+    const jsonData = await response.json()
+    console.log(jsonData.data)
+    return jsonData
   } catch (error) {
     throw new Error(error)
   }
