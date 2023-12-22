@@ -16,14 +16,14 @@ export const useRestaurantMenu = (resId) => {
       setLoading(true)
       try {
         const result = await fetchRestaurantMenu(resId)
-        console.log(result.data)
+        console.log(result.data, 'menu data')
         if (result?.data) {
           dispatchRestaurant({
             type: 'SET',
             payload: result.data?.cards[0]?.card?.card?.info,
           })
           setMenu(
-            result?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
+            result?.data.cards[1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
               ?.card?.card?.itemCards
           )
         }
