@@ -24,3 +24,8 @@ export const RESTAURANT_LIST_API_CARD_ID_FOR_DESKTOP = 'restaurant_grid_listing'
 export const RESTAURANTS_MENU_API =
   CORS_PROXY +
   'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&restaurantId='
+
+export const GITHUB_API = 'https://api.github.com/users/shbaaaaz'
+
+export const DUMMY_AVATAR_URL =
+  'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'

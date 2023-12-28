@@ -1,0 +1,23 @@
+.user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 250px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.avatar-container {
+  width: 150px;
+}
+
+.user-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
