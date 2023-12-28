@@ -2,9 +2,11 @@ import { useRestaurantMenu } from '../../hooks/useRestaurantMenu'
 import MenuItemCard from '../MenuItemCard/MenuItemCard'
 import styles from './RestaurantMenu.module.css'
 import { FaStar } from 'react-icons/fa'
+import { useParams } from 'react-router-dom'
 
 const RestaurantMenu = () => {
-  const { restaurantInfo, menu, loading, error } = useRestaurantMenu(691057)
+  const { id } = useParams()
+  const { restaurantInfo, menu, loading, error } = useRestaurantMenu(id)
   console.log(menu)
 
   if (!loading && !error && restaurantInfo) {

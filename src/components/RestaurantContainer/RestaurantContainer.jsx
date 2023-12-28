@@ -6,6 +6,7 @@ import { ShimmerCardContainer } from '../Shimmer/Shimmer'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
 import styles from './RestaurantContainer.module.css'
+import { Link } from 'react-router-dom'
 
 export const RestaurantContainer = ({ searchString }) => {
   const [restaurantList, setRestaurantList] = useState([])
@@ -72,10 +73,14 @@ export const RestaurantContainer = ({ searchString }) => {
       {filteredRestaurantData.length > 0 && (
         <div className={styles['restaurant-container']}>
           {filteredRestaurantData.map((restaurant) => (
-            <RestaurantCard
+            <Link
+              className={styles['restaurant-card-cta']}
+              to={'restaurant/' + restaurant.info.id}
               key={restaurant.info.id}
-              restaurantData={restaurant}
-            />
+              aria-label='Click here to open the restaurant menu'
+            >
+              <RestaurantCard restaurantData={restaurant} />
+            </Link>
           ))}
         </div>
       )}

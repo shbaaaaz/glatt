@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: small;
+  margin: 1.2rem 0;
+}
+
+.container h3,
+.container p {
+  margin: 5px 0;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image {
+  height: 110px;
+  width: 120px;
+  border-radius: 15px;
+}
+
+.cta {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  background-color: white;
+  padding: 0.5rem 1.8rem;
+  transform: translateX(-50%);
+  border: 1px solid green;
+  border-radius: 5px;
+  cursor: pointer;
+  color: green;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    align-items: flex-start;
+    margin: 2rem 0;
+  }
+
+  .image {
+    height: 100px;
+    width: 120px;
+    border-radius: 15px;
+  }
+}
