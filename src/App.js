@@ -1,15 +1,15 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 // importing local files
 import styles from './App.module.css'
 import Header from './components/Header/Header'
 import Body from './components/Body/Body'
-import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 import RouteError from './components/RouteError/RouteError'
 import RestaurantMenu from './components/RestaurantMenu/RestaurantMenu'
+
+const About = lazy(() => import('./components/About/About'))
 
 const App = () => {
   const [searchString, setSearchString] = useState('')
@@ -38,16 +38,20 @@ const appRouter = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About />,
+        element: (
+          <Suspense fallback={<h2>Loading...</h2>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: '/contact',
         element: <Contact />,
       },
       {
-        path:"restaurant/:id",
-        element: <RestaurantMenu/>
-      }
+        path: 'restaurant/:id',
+        element: <RestaurantMenu />,
+      },
     ],
   },
 ])

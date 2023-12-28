@@ -1,40 +1,21 @@
 // import third party packages
 import { useEffect, useState } from 'react'
 // import local files
-import { fetchRestaurantList } from '../../lib/restaurantData'
 import { ShimmerCardContainer } from '../Shimmer/Shimmer'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
 import styles from './RestaurantContainer.module.css'
 import { Link } from 'react-router-dom'
+import { useRestaurant } from '../../hooks/useRestaurant'
 
 export const RestaurantContainer = ({ searchString }) => {
-  const [restaurantList, setRestaurantList] = useState([])
+  const { restaurantList, isLoading, error } = useRestaurant()
   const [filteredRestaurantData, setFilteredRestaurantData] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
 
-  // Fetch restaurant list on initial render
+  // Create a copy of original dataset for filtering
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setError('')
-        setIsLoading(true)
-        const restaurants = await fetchRestaurantList()
-        if (restaurants) {
-          setRestaurantList(restaurants)
-          setFilteredRestaurantData(restaurants)
-          setIsLoading(false)
-        } else {
-          throw new Error('Something went wrong!')
-        }
-      } catch (error) {
-        setIsLoading(false)
-        setError(error.message)
-      }
-    }
-    fetchData()
-  }, [])
+    setFilteredRestaurantData(restaurantList)
+  }, [restaurantList])
 
   // Filter data on search
   useEffect(() => {
