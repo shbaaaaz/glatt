@@ -1,13 +1,32 @@
+import { useEffect } from 'react'
 import { useRestaurantMenu } from '../../hooks/useRestaurantMenu'
 import MenuItemCard from '../MenuItemCard/MenuItemCard'
 import styles from './RestaurantMenu.module.css'
 import { FaStar } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom'
+import { useState } from 'react'
 
 const RestaurantMenu = () => {
+  const searchString = useOutletContext()
   const { id } = useParams()
   const { restaurantInfo, menu, loading, error } = useRestaurantMenu(id)
-  console.log(menu)
+  const [filteredMenu, setFilteredMenu] = useState([])
+
+  // Create a copy of menu to filtered menu when menu changes
+  useEffect(() => {
+    setFilteredMenu(menu)
+  }, [menu])
+
+  useEffect(() => {
+    searchString
+      ? setFilteredMenu(
+          filteredMenu.filter((menuItem) =>
+            menuItem.card.info.name.toLowerCase().includes(searchString)
+          )
+        )
+      : setFilteredMenu(menu)
+  }, [searchString])
 
   if (!loading && !error && restaurantInfo) {
     return (
@@ -33,8 +52,8 @@ const RestaurantMenu = () => {
           </div>
         </div>
         <h2>Menu</h2>
-        {menu &&
-          menu.map((item) => (
+        {filteredMenu &&
+          filteredMenu.map((item) => (
             <div key={item.card.info.id}>
               <MenuItemCard menuItem={item.card.info} />
             </div>

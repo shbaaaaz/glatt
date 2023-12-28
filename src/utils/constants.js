@@ -1,6 +1,9 @@
 export const RESTAURANT_IMG_BASE_URL =
   'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/'
 
+export const NOT_FOUND_IMAGE =
+  'https://st4.depositphotos.com/14953852/22772/v/450/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg'
+
 export const DEFAULT_ADDRESS = {
   lat: '26.8127442',
   long: '80.9012798',

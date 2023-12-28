@@ -1,10 +1,9 @@
-import { RESTAURANT_IMG_BASE_URL } from '../../utils/constants'
+import { RESTAURANT_IMG_BASE_URL, NOT_FOUND_IMAGE } from '../../utils/constants'
 import styles from './MenuItemCard.module.css'
 
 const MenuItemCard = ({ menuItem }) => {
-  const { name, description, category, price, defaultPrice, imageId } = menuItem
+  const { name, description, price, defaultPrice, imageId } = menuItem
 
-  console.log(imageId)
   return (
     <div className={styles['container']}>
       <div>
@@ -14,7 +13,7 @@ const MenuItemCard = ({ menuItem }) => {
       </div>
       <div className={styles['image-container']}>
         <img
-          src={RESTAURANT_IMG_BASE_URL + imageId}
+          src={imageId ? RESTAURANT_IMG_BASE_URL + imageId : NOT_FOUND_IMAGE}
           alt={name}
           className={styles['image']}
         />

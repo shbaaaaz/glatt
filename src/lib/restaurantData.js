@@ -46,7 +46,7 @@ export const fetchRestaurantList = async () => {
 }
 
 export const fetchRestaurantMenu = async (
-  restaurantID = '691057',
+  restaurantID,
   lat = DEFAULT_ADDRESS.lat,
   lng = DEFAULT_ADDRESS.long
 ) => {
@@ -54,7 +54,6 @@ export const fetchRestaurantMenu = async (
     const url = `${RESTAURANTS_MENU_API}${restaurantID}&lat=${lat}&lng=${lng}`
     const response = await fetch(url)
     const jsonData = await response.json()
-    console.log(jsonData.data)
     return jsonData
   } catch (error) {
     throw new Error(error)
