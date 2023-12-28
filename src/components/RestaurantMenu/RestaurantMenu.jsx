@@ -22,7 +22,7 @@ const RestaurantMenu = () => {
           <div className={styles['rating-box']}>
             <p className={styles['rating']}>
               <span>
-                <FaStar />
+                <FaStar arria-label='rating icon' />
               </span>
               <span>{restaurantInfo.rating}</span>
             </p>

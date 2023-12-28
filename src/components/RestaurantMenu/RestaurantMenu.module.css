@@ -1,5 +1,5 @@
 .restaurant-menu-container {
-  margin: 1rem 15%;
+  margin: 1rem 2vw;
 }
 
 .restaurant-info {
@@ -9,17 +9,21 @@
 }
 
 .rating-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid gray;
+  border: 1px solid rgb(220, 216, 216);
   border-radius: 10px;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
   font-size: small;
 }
 
 .rating {
+  text-align: center;
   font-weight: bold;
   font-size: medium;
   color: green;
+}
+
+@media screen and (min-width: 768px) {
+  .restaurant-menu-container {
+    margin: 1rem 10vw;
+  }
 }

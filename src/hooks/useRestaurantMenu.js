@@ -23,7 +23,7 @@ export const useRestaurantMenu = (resId) => {
             payload: result.data?.cards[0]?.card?.card?.info,
           })
           setMenu(
-            result?.data.cards[1]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
+            result?.data.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
               ?.card?.card?.itemCards
           )
         }
