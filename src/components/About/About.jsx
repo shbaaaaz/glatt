@@ -1,8 +1,14 @@
+import User from '../User/User'
+
 const About = () => {
   return (
     <div>
       <h2>About</h2>
-      <p>This is the about page of the app</p>
+      <User
+        name='Shahbaz Khan'
+        location='Cologne, Germany'
+        email='info@shahbazkhan.in'
+      />
     </div>
   )
 }

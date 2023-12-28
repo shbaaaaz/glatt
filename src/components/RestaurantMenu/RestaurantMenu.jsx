@@ -6,6 +6,8 @@ import { FaStar } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
 import { useState } from 'react'
+import { ShimmerMenu } from '../Shimmer/Shimmer'
+import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
 
 const RestaurantMenu = () => {
   const searchString = useOutletContext()
@@ -64,8 +66,8 @@ const RestaurantMenu = () => {
 
   return (
     <div>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && <ShimmerMenu />}
+      {error && <ErrorContainer error={error} />}
     </div>
   )
 }

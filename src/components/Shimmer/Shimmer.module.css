@@ -105,6 +105,42 @@
   background-color: var(--tag-color);
 }
 
+.menu-container {
+  margin: 2rem 1vw;
+}
+
+.menu-restaurant-container {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid var(--tag-color);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  margin: 10px 0;
+}
+
+.menu-restaurant-info h3,
+.menu-restaurant-info p {
+  height: 0.8rem;
+  width: 180px;
+  background-color: var(--tag-color);
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.menu-rating {
+  height: 80px;
+  width: 100px;
+  background-color: var(--tag-color);
+  border-radius: 10px;
+}
+
+.menu-heading {
+  height: 1.2rem;
+  width: 200px;
+  background-color: var(--tag-color);
+  border-radius: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .restaurant-image {
     background-color: var(--tag-color);
@@ -119,5 +155,14 @@
   .details-row-one {
     flex-direction: row;
     align-items: center;
+  }
+
+  .menu-container {
+    margin: 2rem 10vw;
+  }
+
+  .menu-restaurant-info h3,
+  .menu-restaurant-info p {
+    width: 300px;
   }
 }

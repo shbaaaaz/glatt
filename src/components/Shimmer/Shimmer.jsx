@@ -36,3 +36,29 @@ export const ShimmerCardContainer = () => {
     </>
   )
 }
+
+export const ShimmerMenu = () => {
+  return (
+    <div className={styles['menu-container']}>
+      <div className={styles['menu-restaurant-container']}>
+        <div className={styles['menu-restaurant-info']}>
+          <h3></h3>
+          <p></p>
+          <p></p>
+        </div>
+        <div className={styles['menu-rating']}></div>
+      </div>
+      <h3 className={styles['menu-heading']}></h3>
+      {[...Array(8)].map((item, index) => (
+        <div className={styles['menu-restaurant-container']}>
+          <div className={styles['menu-restaurant-info']}>
+            <h3></h3>
+            <p></p>
+            <p></p>
+          </div>
+          <div className={styles['menu-rating']}></div>
+        </div>
+      ))}
+    </div>
+  )
+}
