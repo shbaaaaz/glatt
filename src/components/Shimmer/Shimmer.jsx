@@ -50,7 +50,7 @@ export const ShimmerMenu = () => {
       </div>
       <h3 className={styles['menu-heading']}></h3>
       {[...Array(8)].map((item, index) => (
-        <div className={styles['menu-restaurant-container']}>
+        <div className={styles['menu-restaurant-container']} key={index}>
           <div className={styles['menu-restaurant-info']}>
             <h3></h3>
             <p></p>

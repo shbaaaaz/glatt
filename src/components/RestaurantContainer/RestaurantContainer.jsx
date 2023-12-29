@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 // import local files
 import { ShimmerCardContainer } from '../Shimmer/Shimmer'
-import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
+import { RestaurantCard, isOpen } from '../RestaurantCard/RestaurantCard'
 import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
 import styles from './RestaurantContainer.module.css'
 import { Link } from 'react-router-dom'
@@ -11,6 +11,7 @@ import { useRestaurant } from '../../hooks/useRestaurant'
 export const RestaurantContainer = ({ searchString }) => {
   const { restaurantList, isLoading, error } = useRestaurant()
   const [filteredRestaurantData, setFilteredRestaurantData] = useState([])
+  const OpenRestaurant = isOpen(RestaurantCard)
 
   // Create a copy of original dataset for filtering
   useEffect(() => {
@@ -60,7 +61,11 @@ export const RestaurantContainer = ({ searchString }) => {
               key={restaurant.info.id}
               aria-label='Click here to open the restaurant menu'
             >
-              <RestaurantCard restaurantData={restaurant} />
+              {restaurant.info.isOpen ? (
+                <OpenRestaurant restaurantData={restaurant} />
+              ) : (
+                <RestaurantCard restaurantData={restaurant} />
+              )}
             </Link>
           ))}
         </div>

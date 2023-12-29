@@ -57,3 +57,14 @@ export const RestaurantCard = ({ restaurantData }) => {
     </div>
   )
 }
+
+export const isOpen = (RestaurantCard) => {
+  return ({ restaurantData }) => {
+    return (
+      <div className={styles['open-restaurant-container']}>
+        <label className={styles['open-label']}>open</label>
+        <RestaurantCard restaurantData={restaurantData} />
+      </div>
+    )
+  }
+}
