@@ -31,7 +31,11 @@ const MenuCategory = ({ category, index }) => {
         <div className={styles['menu-items']}>
           {cards &&
             cards.map((menuCard) => (
-              <div key={menuCard.id} aria-labelledby={title}>
+              <div
+                key={menuCard.id}
+                aria-labelledby={title}
+                className={styles['menu-item-card']}
+              >
                 <MenuItemCard menuItem={menuCard} />
               </div>
             ))}

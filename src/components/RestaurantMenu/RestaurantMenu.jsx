@@ -40,7 +40,9 @@ const RestaurantMenu = () => {
               <span>{restaurantInfo.rating}</span>
             </p>
             <hr />
-            <p>{restaurantInfo.totalRatings}</p>
+            <p className={styles['total-ratings']}>
+              {restaurantInfo.totalRatings}
+            </p>
           </div>
         </div>
         <h2>Menu</h2>

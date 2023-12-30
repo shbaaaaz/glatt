@@ -22,6 +22,10 @@
   color: green;
 }
 
+.total-ratings {
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
   .restaurant-menu-container {
     margin: 1rem 10vw;

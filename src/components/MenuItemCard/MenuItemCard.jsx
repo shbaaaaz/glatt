@@ -15,6 +15,7 @@ const MenuItemCard = ({ menuItem }) => {
         <img
           src={imageId ? RESTAURANT_IMG_BASE_URL + imageId : NOT_FOUND_IMAGE}
           alt={name}
+          loading='lazy'
           className={styles['image']}
         />
         <button className={styles['cta']}>ADD+</button>
