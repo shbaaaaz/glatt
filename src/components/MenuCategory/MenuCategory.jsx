@@ -3,17 +3,12 @@ import MenuItemCard from '../MenuItemCard/MenuItemCard'
 import { useEffect, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-const MenuCategory = ({ category, index }) => {
+const MenuCategory = ({ category, index, isOpen, setOpenCategoryIndex }) => {
   const { title, cards } = category
-  const [isOpen, setIsOpen] = useState(false)
 
   const cardClickHandler = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen)
+    setOpenCategoryIndex()
   }
-
-  useEffect(() => {
-    if (index === 0) setIsOpen(true)
-  }, [])
 
   return (
     <div className={styles['category-container']}>

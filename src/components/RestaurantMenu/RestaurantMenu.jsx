@@ -14,6 +14,7 @@ const RestaurantMenu = () => {
   const { id } = useParams()
   const { restaurantInfo, menu, loading, error } = useRestaurantMenu(id)
   const [filteredMenu, setFilteredMenu] = useState([])
+  const [openCategoryIndex, setOpenCategoryIndex] = useState(0)
 
   // Create a copy of menu to filtered menu when menu changes
   useEffect(() => {
@@ -52,6 +53,12 @@ const RestaurantMenu = () => {
               key={category.title}
               category={category}
               index={index}
+              isOpen={index === openCategoryIndex ? true : false}
+              setOpenCategoryIndex={() =>
+                index === openCategoryIndex
+                  ? setOpenCategoryIndex(null)
+                  : setOpenCategoryIndex(index)
+              }
             />
           ))}
       </div>
