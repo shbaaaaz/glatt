@@ -17,24 +17,31 @@ export const useRestaurantMenu = (resId) => {
       setLoading(true)
       try {
         const result = await fetchRestaurantMenu(resId)
+
         // Getting the restaurant details card
         const restaurantDetails = result?.data?.cards?.filter(
           (cardItem) =>
             cardItem?.card?.card?.['@type'].toLowerCase() ===
             MENU_CATEGORY_TYPE.RESTAURANT_DETAILS_CATEGORY.toLocaleLowerCase()
         )[0]?.card?.card?.info
+
+        // Getting the groupedCard that holds menu details
+        const groupedCards = result?.data?.cards?.filter(
+          (card) => card?.groupedCard
+        )[0]?.groupedCard
+
         // Getting the cards with different categories of menu
-        const menuData =
-          result?.data.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-            (menuCard) =>
-              menuCard.card?.card?.['@type'] ===
-                MENU_CATEGORY_TYPE.ITEM_CATEGORY ||
-              menuCard.card?.card?.['@type'] ===
-                MENU_CATEGORY_TYPE.NESTED_ITEM_CATEGORY
-          )
+        const menuData = groupedCards?.cardGroupMap?.REGULAR?.cards.filter(
+          (menuCard) =>
+            menuCard.card?.card?.['@type'] ===
+              MENU_CATEGORY_TYPE.ITEM_CATEGORY ||
+            menuCard.card?.card?.['@type'] ===
+              MENU_CATEGORY_TYPE.NESTED_ITEM_CATEGORY
+        )
 
         // Transforming the data menu data to create an array of menu with the category name and the menu items
         const finalMenu = transformMenu(menuData)
+
         dispatchRestaurant({
           type: 'SET',
           payload: restaurantDetails,

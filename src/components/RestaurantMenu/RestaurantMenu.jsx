@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useRestaurantMenu } from '../../hooks/useRestaurantMenu'
-import MenuItemCard from '../MenuItemCard/MenuItemCard'
 import styles from './RestaurantMenu.module.css'
 import { FaStar } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
@@ -15,20 +14,11 @@ const RestaurantMenu = () => {
   const { id } = useParams()
   const { restaurantInfo, menu, loading, error } = useRestaurantMenu(id)
   const [filteredMenu, setFilteredMenu] = useState([])
+
   // Create a copy of menu to filtered menu when menu changes
   useEffect(() => {
     setFilteredMenu(menu)
   }, [menu])
-
-  useEffect(() => {
-    searchString
-      ? setFilteredMenu(
-          filteredMenu.filter((menuItem) =>
-            menuItem.card.info.name.toLowerCase().includes(searchString)
-          )
-        )
-      : setFilteredMenu(menu)
-  }, [searchString])
 
   if (!loading && !error && restaurantInfo) {
     return (

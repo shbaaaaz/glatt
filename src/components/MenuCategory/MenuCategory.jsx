@@ -22,7 +22,7 @@ const MenuCategory = ({ category, index }) => {
           {title} ({cards.length})
         </h3>
         {isOpen ? (
-          <IoIosArrowUp aria-aria-expanded='true' />
+          <IoIosArrowUp aria-expanded='true' />
         ) : (
           <IoIosArrowDown aria-expanded='false' />
         )}
