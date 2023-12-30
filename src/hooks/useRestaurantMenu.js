@@ -1,5 +1,6 @@
 import { useEffect, useState, useReducer } from 'react'
 import { fetchRestaurantMenu } from '../lib/restaurantData'
+import { MENU_CATEGORY_TYPE } from '../utils/constants'
 
 export const useRestaurantMenu = (resId) => {
   const [error, setError] = useState('')
@@ -16,28 +17,29 @@ export const useRestaurantMenu = (resId) => {
       setLoading(true)
       try {
         const result = await fetchRestaurantMenu(resId)
+        // Getting the restaurant details card
+        const restaurantDetails = result?.data?.cards?.filter(
+          (cardItem) =>
+            cardItem?.card?.card?.['@type'].toLowerCase() ===
+            MENU_CATEGORY_TYPE.RESTAURANT_DETAILS_CATEGORY.toLocaleLowerCase()
+        )[0]?.card?.card?.info
+        // Getting the cards with different categories of menu
+        const menuData =
+          result?.data.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+            (menuCard) =>
+              menuCard.card?.card?.['@type'] ===
+                MENU_CATEGORY_TYPE.ITEM_CATEGORY ||
+              menuCard.card?.card?.['@type'] ===
+                MENU_CATEGORY_TYPE.NESTED_ITEM_CATEGORY
+          )
 
-        if (result?.data) {
-          if (result.data?.cards.length > 3) {
-            dispatchRestaurant({
-              type: 'SET',
-              payload: result.data?.cards[2]?.card?.card?.info,
-            })
-            setMenu(
-              result?.data.cards[5]?.groupedCard?.cardGroupMap?.REGULAR
-                ?.cards[2]?.card?.card?.itemCards
-            )
-          } else {
-            dispatchRestaurant({
-              type: 'SET',
-              payload: result.data?.cards[0]?.card?.card?.info,
-            })
-            setMenu(
-              result?.data.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-                ?.cards[2]?.card?.card?.itemCards
-            )
-          }
-        }
+        // Transforming the data menu data to create an array of menu with the category name and the menu items
+        const finalMenu = transformMenu(menuData)
+        dispatchRestaurant({
+          type: 'SET',
+          payload: restaurantDetails,
+        })
+        setMenu(finalMenu)
         setLoading(false)
       } catch (error) {
         setLoading(false)
@@ -50,6 +52,7 @@ export const useRestaurantMenu = (resId) => {
   return { restaurantInfo, menu, loading, error }
 }
 
+// Reducer function to set the restaurant details correctly
 function restaurantInfoReducer(state, action) {
   if (action.type === 'SET') {
     return {
@@ -64,4 +67,24 @@ function restaurantInfoReducer(state, action) {
       distance: action.payload.sla.lastMileTravelString,
     }
   } else return state
+}
+
+// Helper function to transform the menu
+function transformMenu(menuData) {
+  return menuData.map((category) => {
+    const obj = {
+      title: category?.card?.card?.title,
+      cards: [],
+    }
+
+    const itemCards =
+      category?.card?.card?.['@type'] === MENU_CATEGORY_TYPE.ITEM_CATEGORY
+        ? category.card.card.itemCards
+        : category.card.card.categories.flatMap(
+            (category) => category.itemCards
+          )
+
+    obj.cards = itemCards.map((itemCard) => itemCard.card.info)
+    return obj
+  })
 }

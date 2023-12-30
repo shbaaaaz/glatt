@@ -54,12 +54,12 @@ const RestaurantMenu = () => {
           </div>
         </div>
         <h2>Menu</h2>
-        {filteredMenu &&
+        {/* {filteredMenu &&
           filteredMenu.map((item) => (
             <div key={item.card.info.id}>
               <MenuItemCard menuItem={item.card.info} />
             </div>
-          ))}
+          ))} */}
       </div>
     )
   }

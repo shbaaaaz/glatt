@@ -29,3 +29,11 @@ export const GITHUB_API = 'https://api.github.com/users/shbaaaaz'
 
 export const DUMMY_AVATAR_URL =
   'https://cdn-icons-png.flaticon.com/512/5556/5556468.png'
+
+export const MENU_CATEGORY_TYPE = {
+  RESTAURANT_DETAILS_CATEGORY:
+    'type.googleapis.com/swiggy.presentation.food.v2.Restaurant',
+  ITEM_CATEGORY: 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory',
+  NESTED_ITEM_CATEGORY:
+    'type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory',
+}
