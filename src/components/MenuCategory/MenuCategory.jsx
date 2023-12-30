@@ -1,9 +1,8 @@
 import styles from './MenuCategory.module.css'
 import MenuItemCard from '../MenuItemCard/MenuItemCard'
-import { useEffect, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
-const MenuCategory = ({ category, index, isOpen, setOpenCategoryIndex }) => {
+const MenuCategory = ({ category, isOpen, setOpenCategoryIndex }) => {
   const { title, cards } = category
 
   const cardClickHandler = () => {
