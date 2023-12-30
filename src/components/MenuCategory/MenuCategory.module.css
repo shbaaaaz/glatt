@@ -1,0 +1,19 @@
+.category-container {
+  border: 1px solid var(--tag-color);
+  border-radius: 5px;
+  margin: 1rem 0;
+  box-shadow: 2px 2px 2px var(--tag-color);
+}
+
+.category-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgb(244, 242, 242);
+  padding: 0.5rem 1rem;
+}
+
+.menu-items {
+  margin: 0 1rem;
+}

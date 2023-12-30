@@ -8,13 +8,13 @@ import { useOutletContext } from 'react-router-dom'
 import { useState } from 'react'
 import { ShimmerMenu } from '../Shimmer/Shimmer'
 import { ErrorContainer } from '../ErrorContainer/ErrorContainer'
+import MenuCategory from '../MenuCategory/MenuCategory'
 
 const RestaurantMenu = () => {
   const searchString = useOutletContext()
   const { id } = useParams()
   const { restaurantInfo, menu, loading, error } = useRestaurantMenu(id)
   const [filteredMenu, setFilteredMenu] = useState([])
-
   // Create a copy of menu to filtered menu when menu changes
   useEffect(() => {
     setFilteredMenu(menu)
@@ -60,6 +60,10 @@ const RestaurantMenu = () => {
               <MenuItemCard menuItem={item.card.info} />
             </div>
           ))} */}
+        {filteredMenu &&
+          filteredMenu.map((category) => (
+            <MenuCategory key={category.title} category={category} />
+          ))}
       </div>
     )
   }
