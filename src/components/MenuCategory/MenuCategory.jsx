@@ -18,16 +18,20 @@ const MenuCategory = ({ category, index }) => {
   return (
     <div className={styles['category-container']}>
       <div className={styles['category-card']} onClick={cardClickHandler}>
-        <h3>
+        <h3 id={title}>
           {title} ({cards.length})
         </h3>
-        {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+        {isOpen ? (
+          <IoIosArrowUp aria-aria-expanded='true' />
+        ) : (
+          <IoIosArrowDown aria-expanded='false' />
+        )}
       </div>
       {isOpen && (
         <div className={styles['menu-items']}>
           {cards &&
             cards.map((menuCard) => (
-              <div key={menuCard.id}>
+              <div key={menuCard.id} aria-labelledby={title}>
                 <MenuItemCard menuItem={menuCard} />
               </div>
             ))}
