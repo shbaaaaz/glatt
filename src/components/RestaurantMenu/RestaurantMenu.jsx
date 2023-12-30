@@ -54,15 +54,13 @@ const RestaurantMenu = () => {
           </div>
         </div>
         <h2>Menu</h2>
-        {/* {filteredMenu &&
-          filteredMenu.map((item) => (
-            <div key={item.card.info.id}>
-              <MenuItemCard menuItem={item.card.info} />
-            </div>
-          ))} */}
         {filteredMenu &&
-          filteredMenu.map((category) => (
-            <MenuCategory key={category.title} category={category} />
+          filteredMenu.map((category, index) => (
+            <MenuCategory
+              key={category.title}
+              category={category}
+              index={index}
+            />
           ))}
       </div>
     )

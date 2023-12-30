@@ -2,7 +2,7 @@
   border: 1px solid var(--tag-color);
   border-radius: 5px;
   margin: 1rem 0;
-  box-shadow: 2px 2px 2px var(--tag-color);
+  box-shadow: 2px 2px 5px rgb(196, 195, 195);
 }
 
 .category-card {
