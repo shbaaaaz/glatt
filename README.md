@@ -24,7 +24,6 @@ Welcome to **Glatt** Food Ordering Frontend Application project! This applicatio
 
 ```bash
 git clone https://github.com/shbaaaaz/glatt.git
-cd glatt
 ```
 
 2. Install dependencies:
