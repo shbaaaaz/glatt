@@ -23,8 +23,8 @@ Welcome to **Glatt** Food Ordering Frontend Application project! This applicatio
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/food-ordering-frontend.git
-cd food-ordering-frontend
+git clone https://github.com/shbaaaaz/glatt.git
+cd glatt
 ```
 
 2. Install dependencies:
